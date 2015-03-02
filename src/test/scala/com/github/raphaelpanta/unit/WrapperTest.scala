@@ -9,8 +9,16 @@ import org.specs2.runner.JUnitRunner
 class WrapperTest extends Specification {
 
   "The string 'I love you'" should {
-    "be wrapper with at column 6" in {
+    "be wrapped at column 6" in {
       wrap("I love you", maxColumn = 6) must equalTo("I love\nyou")
     }
+    "be wrapped at column 10" in {
+      wrap("I love you", maxColumn = 10) must equalTo("I love you");
+    }
+    
+    "be wrapped at column 1" in {
+      wrap("I love you", maxColumn = 1) must equalTo("I\nlove\nyou");
+    }
   }
+  
 }
